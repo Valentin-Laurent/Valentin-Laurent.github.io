@@ -1,48 +1,24 @@
 import streamlit as st
+import GameOf2048
+import pandas as pd
 
 '''
-# TaxiFareModel front
+# Year 2048
 '''
 
-st.markdown('''
-Remember that there are several ways to output content into your web page...
+@st.cache(allow_output_mutation=True, suppress_st_warning=True)
+def load_game():
+    possible_moves = GameOf2048.GameOf2048.possible_moves
+    game = GameOf2048.GameOf2048(4)
+    return (game, possible_moves)
 
-Either as with the title by just creating a string (or an f-string). Or as with this paragraph using the `st.` functions
-''')
+game, possible_moves = load_game()
 
-'''
-## Here we would like to add some controllers in order to ask the user to select the parameters of the ride
+moves = [st.button('Left'), st.button('Right'), st.button('Up'), st.button('Down')]
 
-1. Let's ask for:
-- date and time
-- pickup longitude
-- pickup latitude
-- dropoff longitude
-- dropoff latitude
-- passenger count
-'''
+if True in moves:
+    game.resolve_move(possible_moves[moves.index(True)])
 
-'''
-## Once we have these, let's call our API in order to retrieve a prediction
-
-See ? No need to load a `model.joblib` file in this app, we do not even need to know anything about Data Science in order to retrieve a prediction...
-
-🤔 How could we call our API ? Off course... The `requests` package 💡
-'''
-
-url = 'https://taxifare.lewagon.ai/predict'
-
-if url == 'https://taxifare.lewagon.ai/predict':
-
-    st.markdown('Maybe you want to use your own API for the prediction, not the one provided by Le Wagon...')
-
-'''
-
-2. Let's build a dictionary containing the parameters for our API...
-
-3. Let's call our API using the `requests` package...
-
-4. Let's retrieve the prediction from the **JSON** returned by the API...
-
-## Finally, we can display the prediction to the user
-'''
+df = pd.DataFrame(game.board)
+df.columns = ["2", "0", "4", "8"]
+st.write(df.assign(hack='').set_index('hack'))

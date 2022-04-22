@@ -6,6 +6,6 @@ The result is available [here](https://share.streamlit.io/valentin-laurent/Colla
 This package also contains the required config files to deploy the game on Heroku.
 
 # About the code
-I'm using a hack for the Streamlit part, but I suspect that a much cleaner approach is now possible thanks to Streamlit *Session State* (`app.py` was implemented before this release). This [Streamlit reference repo](https://github.com/gmanchon/streamlit) provides an example [here](https://wagon-data-streamlit.herokuapp.com) of the use of *Session State*.
+I'm using a hack for the Streamlit part, but I suspect that a much cleaner approach is now possible thanks to Streamlit *Session State* (`app.py` was implemented before its release). This [Streamlit reference repo](https://github.com/gmanchon/streamlit) provides an example [here](https://wagon-data-streamlit.herokuapp.com) of the use of *Session State*.
 
 Regarding the Python game engine, it was not designed to be computationally efficient, or even elegant, but just meant to work 😄 It would be an interesting challenge to rewrite it, either in pure Python, either using librairies like NumPy, with performance or elegance in mind.

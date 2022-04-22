@@ -1,14 +1,11 @@
-# This is a basic workflow to help you get started with Actions
+name: Keeping app up and running
 
-name: CI
-
-# Controls when the workflow will run
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '0 0 * * MON'
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -16,19 +13,20 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: API call with fake user header
-        run: curl 'https://share.streamlit.io/valentin-laurent/collaborative-2048/app.py' \
-        -H 'authority: share.streamlit.io' \
-        -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
-        -H 'accept-language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7' \
-        -H 'cache-control: max-age=0' \
-        -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="100", "Google Chrome";v="100"' \
-        -H 'sec-ch-ua-mobile: ?0' \
-        -H 'sec-ch-ua-platform: "macOS"' \
-        -H 'sec-fetch-dest: document' \
-        -H 'sec-fetch-mode: navigate' \
-        -H 'sec-fetch-site: same-origin' \
-        -H 'sec-fetch-user: ?1' \
-        -H 'upgrade-insecure-requests: 1' \
-        -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36' \
-        -I \
-        --compressed
+        run: >-
+          curl 'https://share.streamlit.io/valentin-laurent/collaborative-2048/app.py' \
+          -H 'authority: share.streamlit.io' \
+          -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+          -H 'accept-language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7' \
+          -H 'cache-control: max-age=0' \
+          -H 'sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="100", "Google Chrome";v="100"' \
+          -H 'sec-ch-ua-mobile: ?0' \
+          -H 'sec-ch-ua-platform: "macOS"' \
+          -H 'sec-fetch-dest: document' \
+          -H 'sec-fetch-mode: navigate' \
+          -H 'sec-fetch-site: same-origin' \
+          -H 'sec-fetch-user: ?1' \
+          -H 'upgrade-insecure-requests: 1' \
+          -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36' \
+          -I \
+          --compressed
